@@ -24,6 +24,10 @@ module.exports = function (grunt) {
             sass: {
                 files: ['sass/*.scss'],
                 tasks: ['sass', 'autoprefixer', 'cssmin']
+            },
+            js: {
+                files: ['scripts/*.js'],
+                tasks: ['concat', 'uglify']
             }
         },
 
@@ -46,7 +50,11 @@ module.exports = function (grunt) {
             },
 
             dist: {
-                src: ['js/*.js'],
+                src: [
+                    'scripts/jquery.min.js',
+                    'scripts/swiper.jquery.min.js',
+                    'scripts/custom.js',
+                ],
                 dest: 'js/main.min.js'
             }
         },

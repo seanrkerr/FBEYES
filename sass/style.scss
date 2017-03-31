@@ -11,6 +11,9 @@ Description: Bootstrap 4 with Sass
 // fonts
 @import "base/typography";
 
+// fonts
+@import "swiper.min";
+
 
 /* GENERAL STYLES
 -------------------------------------------------*/
@@ -88,8 +91,8 @@ a {
     top: 0;
     object-fit: cover;
     z-index: $zindex-bg;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    //margin-left: calc(50% - 50vw);
+    //margin-right: calc(50% - 50vw);
   }
 
   &__heading {
@@ -118,6 +121,15 @@ a {
   .logo {
     position: absolute;
     transform: translateY(-30%); // -75px for default logo size
+    z-index: $zindex-up;
+  }
+
+  &__nav {
+    position: absolute;
+    left: 30%;
+    top: 0;
+    width: 70%;
+    z-index: $zindex-up;
   }
 
   &__menu {
@@ -126,7 +138,7 @@ a {
     font-size: 1.375rem; // 22px
     line-height: 1;
     letter-spacing: $letter-spacing-gotham;
-    padding-top: $grid-gutter-width;
+    //padding-top: $grid-gutter-width;
     display: flex;
     text-transform: uppercase;
     justify-content: space-between;
@@ -140,6 +152,25 @@ a {
         border-bottom-color: currentColor;
       }
     }
+  }
+
+  .swiper-container {
+    width: 100vw;
+    height: 100%;
+    //margin-left: calc(50% - 50vw);
+    //margin-right: calc(50% - 50vw);
+  }
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .swiper-slide-content {
+    max-width: calc(800px + #{$grid-gutter-width});
+    padding: 0 #{$grid-gutter-width / 2};
+    margin: 10rem auto 0;
   }
 
   &__statement {
@@ -249,6 +280,8 @@ a {
 
   &__service-img {
     position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     z-index: $zindex-bg;
@@ -278,11 +311,12 @@ a {
 
   &__list {
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__item {
     height: 4.6875rem; //75px
-    width: 16.666666666%;
+    width: calc(16.666666666% - 1px);
     background: $bg-white;
     margin: 0 0.5px 1px;
     border: 1px solid #ededed;
