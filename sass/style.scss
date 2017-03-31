@@ -31,6 +31,7 @@ body {
   color: $color-white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body, html {
@@ -91,8 +92,14 @@ a {
     top: 0;
     object-fit: cover;
     z-index: $zindex-bg;
-    //margin-left: calc(50% - 50vw);
-    //margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   &__heading {
@@ -138,7 +145,7 @@ a {
     font-size: 1.375rem; // 22px
     line-height: 1;
     letter-spacing: $letter-spacing-gotham;
-    //padding-top: $grid-gutter-width;
+    padding-top: $grid-gutter-width;
     display: flex;
     text-transform: uppercase;
     justify-content: space-between;
@@ -157,20 +164,21 @@ a {
   .swiper-container {
     width: 100vw;
     height: 100%;
-    //margin-left: calc(50% - 50vw);
-    //margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 
   .swiper-slide {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .swiper-slide-content {
     max-width: calc(800px + #{$grid-gutter-width});
     padding: 0 #{$grid-gutter-width / 2};
-    margin: 10rem auto 0;
+    margin-top: 10rem;
   }
 
   &__statement {

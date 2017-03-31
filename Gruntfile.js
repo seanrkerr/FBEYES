@@ -53,6 +53,7 @@ module.exports = function (grunt) {
                 src: [
                     'scripts/jquery.min.js',
                     'scripts/swiper.jquery.min.js',
+                    'scripts/objectFitPolyfill.basic.min.js',
                     'scripts/custom.js',
                 ],
                 dest: 'js/main.min.js'
