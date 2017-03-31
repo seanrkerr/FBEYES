@@ -1,103 +1,131 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    // Project configuration.
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
 
-    compass: {      
-    dist: {        
-      options: {      
-        sassDir: 'sass',
-        cssDir: 'css',
-        environment: 'production'
-      }
-    },
-    dev: {              
-      options: {
-        sassDir: 'sass',
-        cssDir: 'css'
-      }
-    }
-  },
-
-    watch: {
-    	sass:{
-    		files: ['sass/*.scss'],
-    		tasks: ['sass', 'cssmin']
-    	}
-    },
-
-    sass: {
-    	dist: {
-            options: {                 
-                compass: true,
+        compass: {
+            dist: {
+                options: {
+                    sassDir: 'sass',
+                    cssDir: 'css',
+                    environment: 'production'
+                }
             },
-    		files: {
-    			'css/style.css' : 'sass/style.scss'
-    		}
-    	}
-    },
+            dev: {
+                options: {
+                    sassDir: 'sass',
+                    cssDir: 'css'
+                }
+            }
+        },
 
-    concat: {
-    	options: {
-    		separator: ';',
-    		stripBanners: true,
-    		 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-    	},
+        watch: {
+            sass: {
+                files: ['sass/*.scss'],
+                tasks: ['sass', 'autoprefixer', 'cssmin']
+            }
+        },
 
-    	dist: {
-    		src: ['js/*.js'],
-    		dest: 'js/main.min.js'
-    	}
-    },
+        sass: {
+            dist: {
+                options: {
+                    compass: true,
+                },
+                files: {
+                    'css/style.css': 'sass/style.scss'
+                }
+            }
+        },
+
+        concat: {
+            options: {
+                separator: ';',
+                stripBanners: true,
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+            },
+
+            dist: {
+                src: ['js/*.js'],
+                dest: 'js/main.min.js'
+            }
+        },
 
 
-    uglify:{
-    	options: {
-    		manage: false,
-    		preserveComments: 'all' //preserve all comments on JS files
-    	},
-    	my_target:{
-    		files: {
-    			'js/main.min.js' : ['js/*.js']
-    		}
-    	}
-    },
-  
+        uglify: {
+            options: {
+                manage: false,
+                preserveComments: 'all' //preserve all comments on JS files
+            },
+            my_target: {
+                files: {
+                    'js/main.min.js': ['js/*.js']
+                }
+            }
+        },
 
-    cssmin:{
-    	my_target:{
-    		files: [{
-    			expand: true,
-    			cwd: 'css/',
-    			src: ['*.css', '!*.min.css'],
-    			dest: 'css/',
-    			ext: '.min.css'
+        autoprefixer: {
+            options: {
+                safe: true
+            },
+            no_dest_single: {
+                src: 'css/style.css'
+            },
+        },
 
-    		}]
-    	}
-    }
+        cssmin: {
+            my_target: {
+                files: [{
+                    expand: true,
+                    cwd: 'css/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'css/',
+                    ext: '.min.css'
 
-  });
+                }]
+            }
+        },
 
-  // Load the plugin that provides the "compass" task.
-  grunt.loadNpmTasks('grunt-contrib-compass');
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src : 'css/*.css'
+                },
+                options: {
+                    watchTask: true,
+                    proxy: "www.forbeautifuleyes.com.au.loc",
+                    host: "www.forbeautifuleyes.com.au.loc",
+                    open: 'external'
+                }
+            }
+        }
 
-     // Load the plugin that provides the "watch" task.
-  grunt.loadNpmTasks('grunt-contrib-watch');
+    });
 
-     // Load the plugin that provides the "sass" task.
-  grunt.loadNpmTasks('grunt-contrib-sass');
+    // Load the plugin that provides the "compass" task.
+    grunt.loadNpmTasks('grunt-contrib-compass');
+
+    // Load the plugin that provides the "watch" task.
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    // Load the plugin that provides the "sass" task.
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
-      // Load the plugin that provides the "concat" task.
-  grunt.loadNpmTasks('grunt-contrib-concat');
+    // Load the plugin that provides the "concat" task.
+    grunt.loadNpmTasks('grunt-autoprefixer');
 
-   // Load the plugin that provides the "cssmin" task.
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+    // Load the plugin that provides the "concat" task.
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
-   // Default task(s).
-  grunt.registerTask('default', ['uglify','cssmin']);
+    // Load the plugin that provides the "cssmin" task.
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+    // Load browser sync
+    grunt.loadNpmTasks('grunt-browser-sync');
+
+    // Default task(s).
+    grunt.registerTask('default', ['browserSync', 'watch']);
 };

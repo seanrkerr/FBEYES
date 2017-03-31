@@ -1,7 +1,17 @@
 /* TYPOGRAPHY */
 
-/* Google Fonts */
-@import url("https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic");
+@font-face {
+  font-family: 'Gotham HTF';
+  src: url('/fonts/gothamhtf-book-webfont.woff2') format('woff2'),
+       url('/fonts/gothamhtf-book-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
 
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800,900");
-
+@font-face {
+  font-family: 'Lavanderia';
+  src: url('/fonts/lavanderia-webfont.woff2') format('woff2'),
+  url('/fonts/lavanderia-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -3,17 +3,20 @@
 // colors
 
 $color-white: #FFFFFF;
-$color-turquoise: #00af94;
+$color-grey: #818285;
+$color-blue: #67a3d9;
 
 
 // backgrounds
 
 $bg-white: #FFFFFF;
-$bg-turquoise: #00c8aa;
-$bg-black: #000000;
 
 
 // font families
+$font-playfair: 'Playfair Display', serif;
+$font-gotham: 'Gotham HTF', sans-serif;
+$font-lavanderia: 'Lavanderia', sans-serif;
 
-$font-lato: 'Lato', Arial, Verdana, sans-serif;
-$font-raleway: 'Raleway', Arial, Verdana, sans-serif;
+$letter-spacing-gotham: -0.01em;
+
+$zindex-bg: -1000;
