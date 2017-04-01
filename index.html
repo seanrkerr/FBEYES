@@ -13,7 +13,7 @@
             }
         };
 
-        (function(d) {
+        (function (d) {
             var wf = d.createElement('script'), s = d.scripts[0];
             wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
             wf.async = true;
@@ -40,11 +40,11 @@
                 <a href="https://www.facebook.com/ForBeautifulEyes" target="_blank" class="facebook-link"><span>Follow us</span></a>
             </div>
             <div class="nav__menu nav__menu--main">
-                <a href="#">About Us</a>
-                <a href="#">Our Services</a>
-                <a href="#">Lenses</a>
-                <a href="#">Frames</a>
-                <a href="#">Contact Us</a>
+                <a href="/about-us">About Us</a>
+                <a href="/optometry-services">Our Services</a>
+                <a href="/lenses">Lenses</a>
+                <a href="/frames">Frames</a>
+                <a href="/contact-us">Contact Us</a>
             </div>
         </nav>
         <a href="#" class="menu-link"></a>
@@ -106,28 +106,40 @@
                     <a href="#" class="services__service">
                         <h3 class="services__service-heading">Eye tests</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-eye-tests.jpg" data-object-fit/>
+                        <img src="/img/home/service-eye-tests@1x.jpg"
+                             srcset="/img/home/service-eye-tests@2x.jpg 2x,
+                                     /img/home/service-eye-tests@1x.jpg 1x"
+                             data-object-fit/>
                     </a>
                 </div>
                 <div class="services__service-wrap">
                     <a href="#" class="services__service">
                         <h3 class="services__service-heading">Health conditions</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-health-conditions.jpg" data-object-fit/>
+                        <img src="/img/home/service-health-conditions@1x.jpg"
+                             srcset="/img/home/service-health-conditions@2x.jpg 2x,
+                                     /img/home/service-health-conditions@1x.jpg 1x"
+                             data-object-fit/>
                     </a>
                 </div>
                 <div class="services__service-wrap">
                     <a href="#" class="services__service">
                         <h3 class="services__service-heading">Professional advice</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-professional-advice.jpg" data-object-fit/>
+                        <img src="/img/home/service-professional-advice@1x.jpg"
+                             srcset="/img/home/service-professional-advice@2x.jpg 2x,
+                                     /img/home/service-professional-advice@1x.jpg 1x"
+                             data-object-fit/>
                     </a>
                 </div>
                 <div class="services__service-wrap">
                     <a href="#" class="services__service">
                         <h3 class="services__service-heading">On-site lab</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-onsite-lab.jpg" data-object-fit/>
+                        <img src="/img/home/service-onsite-lab@1x.jpg"
+                             srcset="/img/home/service-onsite-lab@2x.jpg 2x,
+                                     /img/home/service-onsite-lab@1x.jpg 1x"
+                             data-object-fit/>
                     </a>
                 </div>
             </div>
@@ -146,8 +158,14 @@
             <a href="#" class="frames__find-out-link">Find out more &gt;</a>
         </div>
         <div class="section__bg">
-            <img src="/img/home/frames-bg.jpg"
+            <img src="/img/home/frames-bg@1500w.jpg"
+                 srcset="/img/home/frames-bg@1500w.jpg 1500w,
+                         /img/home/frames-bg@1200w.jpg 1200w,
+                         /img/home/frames-bg@1024w.jpg 1024w,
+                         /img/home/frames-bg@768w.jpg 768w,
+                         /img/home/frames-bg@400w.jpg 400w"
                  alt=""
+                 sizes="100vw"
                  data-object-fit
             />
         </div>
@@ -213,11 +231,11 @@
     <footer class="footer">
         <div class="row">
             <div class="col footer__links">
-                <a href="#">About Us</a>
-                <a href="#">Our Services</a>
-                <a href="#">Lenses</a>
-                <a href="#">Frames</a>
-                <a href="#">Contact Us</a>
+                <a href="/about-us">About Us</a>
+                <a href="/optometry-services">Our Services</a>
+                <a href="/lenses">Lenses</a>
+                <a href="/frames">Frames</a>
+                <a href="/contact-us">Contact Us</a>
                 <a href="#">Make an appointment</a>
                 <span class="footer__link--last">
                     <a href="https://www.facebook.com/ForBeautifulEyes" target="_blank" class="facebook-link"><span>Follow us</span></a>
