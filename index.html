@@ -6,20 +6,40 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" value="notranslate">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css"/>
+    <script>
+        WebFontConfig = {
+            google: {
+                families: ['Playfair+Display:400i']
+            }
+        };
+
+        (function(d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+    <link rel="stylesheet" href="/css/style.min.css"/>
     <script src="/js/main.min.js" defer></script>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/favicon/apple-touch-icon-144x144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/favicon/apple-touch-icon-152x152.png"/>
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="/img/favicon/favicon-16x16.png" sizes="16x16"/>
+    <meta name="application-name" content="For Beautiful Eyes - Eyewear Boutique"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF"/>
+    <meta name="msapplication-TileImage" content="/img/favicon/mstile-144x144.png"/>
 </head>
 <body>
 <div class="container">
     <div class="section header">
         <h1 class="logo">For Beautiful Eyes - Eyewear Boutique</h1>
-        <nav class="header__nav">
-            <div class="header__menu header__menu--small">
+        <nav class="nav hidden">
+            <div class="nav__menu nav__menu--small">
                 <a href="#">Make an appointment</a>
                 <a href="https://www.facebook.com/ForBeautifulEyes" target="_blank" class="facebook-link"><span>Follow us</span></a>
             </div>
-            <div class="header__menu header__menu--main">
+            <div class="nav__menu nav__menu--main">
                 <a href="#">About Us</a>
                 <a href="#">Our Services</a>
                 <a href="#">Lenses</a>
@@ -27,14 +47,16 @@
                 <a href="#">Contact Us</a>
             </div>
         </nav>
+        <a href="#" class="menu-link"></a>
         <div class="swiper-container">
             <a href="#" class="swiper-arrow swiper-arrow--prev"></a>
+            <a href="#" class="swiper-arrow swiper-arrow--next"></a>
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="swiper-slide-content">
                         <div class="header__statement">
                             <h2 class="header__statement-heading">
-                                <span class="header__celebrating">Celebrating</span><br/>
+                                <span class="header__celebrating">Celebrating</span>
                                 <span class="header__20-years">20 Years</span> <span class="header__of">of</span><br/>
                                 <span class="header__professional-eyecare">professional eyecare</span><br/>
                             </h2>
@@ -52,13 +74,15 @@
                 </div>
                 <div class="swiper-slide" style="">
                     <div class="swiper-slide-content">
-                        <p class="header__statement">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor vulputate nisl,
-                            vitae interdum ipsum eleifend et. Sed nec ultricies lacus, eget iaculis purus. Proin a
-                            molestie sem. Vivamus elementum massa malesuada, tempus elit ac, cursus odio. Ut sed quam
-                            ipsum. Nam mollis rhoncus mauris, nec tempus enim cursus in. Sed et sollicitudin diam. Donec
-                            arcu urna, facilisis nec nisl at, egestas ullamcorper risus.
-                        </p>
+                        <div class="header__statement">
+                            <p class="header__statement-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor vulputate
+                                nisl, vitae interdum ipsum eleifend et. Sed nec ultricies lacus, eget iaculis purus.
+                                Proin a molestie sem. Vivamus elementum massa malesuada, tempus elit ac, cursus odio. Ut
+                                sed quam ipsum. Nam mollis rhoncus mauris, nec tempus enim cursus in. Sed et
+                                sollicitudin sdiam. Donec arcu urna, facilisis nec nisl at, egestas ullamcorper risus.
+                            </p>
+                        </div>
                     </div>
                     <img src="http://placehold.it/1000x1000/000000?text=placehold.it"
                          alt=""
@@ -66,7 +90,7 @@
                          class="section__bg"/>
                 </div>
             </div>
-            <a href="#" class="swiper-arrow swiper-arrow--next"></a>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
     <div class="row section services">
@@ -82,28 +106,28 @@
                     <a class="services__service">
                         <h3 class="services__service-heading">Eye tests</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-eye-tests.jpg" class="services__service-img" data-object-fit/>
+                        <img src="/img/home/service-eye-tests.jpg" data-object-fit/>
                     </a>
                 </div>
                 <div class="services__service-wrap">
                     <a class="services__service">
                         <h3 class="services__service-heading">Health conditions</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-health-conditions.jpg" class="services__service-img" data-object-fit/>
+                        <img src="/img/home/service-health-conditions.jpg" data-object-fit/>
                     </a>
                 </div>
                 <div class="services__service-wrap">
                     <a class="services__service">
                         <h3 class="services__service-heading">Professional advice</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-professional-advice.jpg" class="services__service-img" data-object-fit/>
+                        <img src="/img/home/service-professional-advice.jpg" data-object-fit/>
                     </a>
                 </div>
                 <div class="services__service-wrap">
                     <a class="services__service">
                         <h3 class="services__service-heading">On-site lab</h3>
                         <span class="services__service-find-out">Find out more &gt;</span>
-                        <img src="/img/home/service-onsite-lab.jpg" class="services__service-img" data-object-fit/>
+                        <img src="/img/home/service-onsite-lab.jpg" data-object-fit/>
                     </a>
                 </div>
             </div>
@@ -112,77 +136,77 @@
     <div class="row section frames">
         <div class="col">
             <h2 class="section__heading">Frames</h2>
-            <p>
+            <p class="section__text">
                 We showcase bespoke frames from the world's leading brands that will fit <br/>
                 your budget, lifestyle, and unique taste in fashion. Our eyewear experts will <br/>
                 make sure you receive prescription frames fitted for your comfort.<br/>
                 To find out more about our great range of visual aids, call or visit us today.<br/>
-                <br/>
-                <a href="#" class="frames__find-out-link">Find out more &gt;</a>
             </p>
+            <br/>
+            <a href="#" class="frames__find-out-link">Find out more &gt;</a>
         </div>
         <div class="section__bg">
             <img src="/img/home/frames-bg.jpg"
                  alt=""
                  data-object-fit
-                 />
+            />
         </div>
     </div>
     <section class="row section frames-logos">
         <div class="col frames-logos__list">
             <span class="frames-logos__item">
-                <img src="/img/home/logos/maui-jim.png" class="frames-logos__img" alt="Maui Jim"/>
+                <img src="/img/home/logos/maui-jim.png" alt="Maui Jim"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/christian-dior.png" class="frames-logos__img" alt="Christian Dior"/>
+                <img src="/img/home/logos/christian-dior.png" alt="Christian Dior"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/oroton.png" class="frames-logos__img" alt="Oroton"/>
+                <img src="/img/home/logos/oroton.png" alt="Oroton"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/prada.png" class="frames-logos__img" alt="Prada"/>
+                <img src="/img/home/logos/prada.png" alt="Prada"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/bvlgari.png" class="frames-logos__img" alt="Bvlgari"/>
+                <img src="/img/home/logos/bvlgari.png" alt="Bvlgari"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/carter-bond.png" class="frames-logos__img" alt="Carter Bond"/>
+                <img src="/img/home/logos/carter-bond.png" alt="Carter Bond"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/jono-hennessy.png" class="frames-logos__img" alt="Jono Hennessy"/>
+                <img src="/img/home/logos/jono-hennessy.png" alt="Jono Hennessy"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/lafont.png" class="frames-logos__img" alt="Lafont"/>
+                <img src="/img/home/logos/lafont.png" alt="Lafont"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/silhouette.png" class="frames-logos__img" alt="Silhouette"/>
+                <img src="/img/home/logos/silhouette.png" alt="Silhouette"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/vanni.png" class="frames-logos__img" alt="Vanni"/>
+                <img src="/img/home/logos/vanni.png" alt="Vanni"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/ted-baker.png" class="frames-logos__img" alt="Ted Baker"/>
+                <img src="/img/home/logos/ted-baker.png" alt="Ted Baker"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/sass-bide.png" class="frames-logos__img" alt="sass & bide"/>
+                <img src="/img/home/logos/sass-bide.png" alt="sass & bide"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/faconnable.png" class="frames-logos__img" alt="Façonnable"/>
+                <img src="/img/home/logos/faconnable.png" alt="Façonnable"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/paul-joe.png" class="frames-logos__img" alt="Paul & Joe"/>
+                <img src="/img/home/logos/paul-joe.png" alt="Paul & Joe"/>
+            </span>
+            <span class="frames-logos__item frames-logos__item--ray-ban">
+                <img src="/img/home/logos/ray-ban.png" alt="Ray-Ban"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/ray-ban.png" class="frames-logos__img frames-logos__img--ray-ban" alt="Ray-Ban"/>
+                <img src="/img/home/logos/morrissey.png" alt="Morrissey"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/morrissey.png" class="frames-logos__img" alt="Morrissey"/>
+                <img src="/img/home/logos/paul-taylor.png" alt="Paul Taylor"/>
             </span>
             <span class="frames-logos__item">
-                <img src="/img/home/logos/paul-taylor.png" class="frames-logos__img" alt="Paul Taylor"/>
-            </span>
-            <span class="frames-logos__item">
-                <img src="/img/home/logos/face-face.png" class="frames-logos__img" alt="Face à Face"/>
+                <img src="/img/home/logos/face-face.png" alt="Face à Face"/>
             </span>
         </div>
     </section>

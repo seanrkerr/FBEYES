@@ -2,35 +2,29 @@
 Theme Name: Bootstrap 4 Sass
 Description: Bootstrap 4 with Sass
 */
-
 @import "scss/bootstrap";
-
 // variables
 @import "helpers/variables";
-
 // fonts
 @import "base/typography";
-
 // fonts
 @import "swiper.min";
-
 
 /* GENERAL STYLES
 -------------------------------------------------*/
 html {
-  @include media-breakpoint-only(md){
+  @include media-breakpoint-down(md) {
     font-size: 12px;
   }
 
-  @include media-breakpoint-only(lg){
+  @include media-breakpoint-only(lg) {
     font-size: 14px;
   }
 }
 
-
 body {
   background: $bg-white;
-  font-family: $font-playfair;
+  font-family: $font-gotham;
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.25;
@@ -45,6 +39,12 @@ body, html {
   padding: 0;
   -webkit-tap-highlight-color: transparent;
   width: 100%;
+}
+
+* {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
 }
 
 a {
@@ -109,12 +109,24 @@ a {
   }
 
   &__heading {
-    font-family: $font-gotham;
     font-weight: 500;
     font-size: 3.125rem; //50px
     line-height: 1.5;
     letter-spacing: $letter-spacing-gotham;
     text-transform: uppercase;
+  }
+
+  &__text {
+    margin-bottom: 0;
+    font-family: $font-playfair;
+    font-style: italic;
+
+  }
+
+  @include media-breakpoint-only(xs) {
+    .section__text br {
+      display: none;
+    }
   }
 }
 
@@ -128,30 +140,61 @@ a {
   text-indent: -99999em;
 }
 
-.header {
-  height: 100vh; // 650px
+.menu-link {
+  position: fixed;
+  pointer-events: auto;
+  width: $grid-gutter-width-base * 1.5;
+  height: $grid-gutter-width-base;
+  top: $grid-gutter-width-base * 0.75;
+  right: $grid-gutter-width-base / 2;
+  z-index: $zindex-modal + 1;
 
-  .logo {
+  &:before,
+  &:after {
+    content: '';
     position: absolute;
-    transform: translate(-2.2rem, -30%); // -75px for default logo size
-    z-index: $zindex-up;
+    left: 0;
+    width: 100%;
+    background: $bg-blue;
+    height: 3px;
+    transition: all 400ms;
+    transform-origin: left center;
   }
 
-  &__nav {
-    position: absolute;
-    left: 25%;
-    top: 0;
-    width: 75%;
-    z-index: $zindex-up;
+  &:before {
+    top: 25%;
   }
 
+  &:after {
+    top: 75%;
+  }
+
+  &.active {
+    &:before,
+    &:after {
+      background: $white;
+    }
+
+    &:before {
+      transform: translate(15%, -#{$grid-gutter-width-base * 0.3}) rotate(45deg);
+    }
+
+    &:after {
+      transform: translate(15%, #{$grid-gutter-width-base * 0.3}) rotate(-45deg);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.nav {
   &__menu {
-    font-family: $font-gotham;
     font-weight: 500;
     font-size: 1.375rem; // 22px
     line-height: 1;
     letter-spacing: $letter-spacing-gotham;
-    padding-top: $grid-gutter-width-base;
     display: flex;
     text-transform: uppercase;
     justify-content: space-between;
@@ -165,6 +208,77 @@ a {
         border-bottom-color: currentColor;
       }
     }
+  }
+
+  @include media-breakpoint-up(md) {
+
+    position: absolute;
+    left: 25%;
+    top: 0;
+    width: 75%;
+    z-index: $zindex-up;
+
+    &__menu {
+
+      padding-top: $grid-gutter-width-base;
+
+      &--small {
+        height: 5.25rem;
+      }
+    }
+
+    &__close {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: $zindex-modal;
+    background: $bg-blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity 400ms;
+    opacity: 1;
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &__menu {
+      flex-direction: column;
+      align-items: center;
+
+      a {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      &--main {
+        margin-top: -5vh;
+      }
+
+      &--small {
+        order: 2;
+      }
+    }
+  }
+}
+
+.header {
+  height: 100vh; // 650px
+
+  .logo {
+    position: absolute;
+    transform: translate(-2.2rem, -30%); // -75px for default logo size
+    z-index: $zindex-up;
   }
 
   .swiper-container {
@@ -181,41 +295,6 @@ a {
     align-items: center;
   }
 
-  .swiper-slide-content {
-    // Make enough space for swiper arrows
-    width: calc(100% - 15rem);
-    max-width: calc(800px + #{$grid-gutter-width-base});
-    padding: 0 #{$grid-gutter-width-base / 2};
-    // This results in 5vh because of elements being wrapped in flexbox
-    margin-top: 10vh;
-  }
-
-  .swiper-arrow {
-    position: absolute;
-    width: 3.15rem; //50px
-    height: 3.15rem; //50px
-    border-radius: 50%;
-    background: $bg-blue url(/img/icons/arrow.svg) center no-repeat;
-    background-size: 0.5625rem 0.9375rem; //9px 15px
-    // Align arrows with content
-    top: 55vh;
-    z-index: $zindex-up;
-
-    &--prev {
-      left: 0;
-      transform: translate(50%, -50%);
-    }
-
-    &--next {
-      right: 0;
-      transform: translate(-50%, -50%) rotate(180deg);
-    }
-  }
-
-  &__statement {
-    margin: 0 3rem;
-  }
-
   &__statement-heading {
     font-weight: 400;
   }
@@ -225,11 +304,10 @@ a {
     font-size: 3.125rem; //50px
     line-height: 0.5;
     margin-left: -3rem;
-    display: inline-block;
+    display: block;
   }
 
   &__20-years {
-    font-family: $font-gotham;
     font-weight: 500;
     letter-spacing: $letter-spacing-gotham;
     font-size: 6.25rem; //100px
@@ -245,7 +323,6 @@ a {
   }
 
   &__professional-eyecare {
-    font-family: $font-gotham;
     font-weight: 500;
     letter-spacing: $letter-spacing-gotham;
     font-size: 2.5rem;
@@ -253,10 +330,106 @@ a {
     line-height: 0.8;
   }
 
+  &__statement-text {
+    font-family: $font-playfair;
+    font-style: italic;
+  }
+
   @include media-breakpoint-up(md) {
-    &__menu {
-      &--small {
-        height: 5.25rem;
+    .swiper-arrow {
+      position: absolute;
+      width: 3.15rem; //50px
+      height: 3.15rem; //50px
+      border-radius: 50%;
+      background: $bg-blue url(/img/icons/arrow.svg) center no-repeat;
+      background-size: 0.5625rem 0.9375rem; //9px 15px
+      // Align arrows with content
+      top: 55vh;
+      z-index: $zindex-up;
+
+      &--prev {
+        left: 0;
+        transform: translate(50%, -50%);
+      }
+
+      &--next {
+        right: 0;
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+    }
+
+    .swiper-slide-content {
+      // Make enough space for swiper arrows
+      width: calc(100% - 15rem);
+      max-width: calc(800px + #{$grid-gutter-width-base});
+      padding: 0 #{$grid-gutter-width-base / 2};
+      // This results in 5vh because of elements being wrapped in flexbox
+      margin-top: 10vh;
+    }
+
+    &__statement {
+      margin: 0 3rem;
+    }
+
+    .swiper-pagination {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+
+    .logo {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .swiper-arrow {
+      display: none;
+    }
+
+    &__statement {
+      margin: 0 #{$grid-gutter-width-base / 2};
+    }
+
+    &__celebrating {
+      margin-left: 0;
+      font-size: 2.5rem;
+      line-height: 1.25;
+    }
+
+    &__20-years {
+      font-size: 4rem;
+    }
+
+    &__of {
+      margin-left: 0;
+    }
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: $bg-white;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: $bg-blue;
+    }
+
+    @media all and (orientation: landscape) {
+      .logo {
+        width: 10rem;
+        height: 10rem;
+        left: 15px;
+        margin-left: calc(50% - 50vw);
+        transform: translateY(-30%);
+      }
+
+      &__statement {
+        margin-top: 30px;
+      }
+
+      &__celebrating {
+        display: inline-block;
       }
     }
   }
@@ -279,8 +452,6 @@ a {
   &__list {
     display: flex;
     flex-wrap: wrap;
-    //max-width: 62.5rem; // 1000px
-    //margin: 0 auto;
   }
 
   &__service-wrap {
@@ -308,16 +479,14 @@ a {
   }
 
   &__service-heading {
-    font-family: $font-gotham;
     font-weight: 500;
     letter-spacing: $letter-spacing-gotham;
     font-size: 2.5rem; //40px
-    line-height: 1.25; //50px
+    line-height: 1; //50px
     text-transform: uppercase;
-    margin: 0;
   }
 
-  &__service-img {
+  &__service img {
     position: absolute;
     left: 0;
     top: 0;
@@ -329,6 +498,14 @@ a {
 
   &__service-find-out {
     font-size: 1rem;
+    font-family: $font-playfair;
+    font-style: italic;
+  }
+
+  @include media-breakpoint-down(sm) {
+    &__service-wrap {
+      width: 100%;
+    }
   }
 }
 
@@ -340,6 +517,8 @@ a {
   &__find-out-link {
     font-size: 1.125rem; //18px
     line-height: 1;
+    font-family: $font-playfair;
+    font-style: italic;
   }
 }
 
@@ -362,20 +541,28 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
 
-  &__img {
-    display: block;
-    max-height: 90%;
+    img {
+      display: block;
+      max-height: 90%;
+    }
 
     &--ray-ban {
-      margin-top: 1%;
+      img {
+        margin-top: 1%;
+      }
     }
   }
 
-  @include media-breakpoint-only(md) {
+  @include media-breakpoint-between(sm, md) {
     &__item {
       width: calc(33.333333% - 1px);
+    }
+  }
+
+  @include media-breakpoint-only(xs) {
+    &__item {
+      width: calc(50% - 1px);
     }
   }
 }
@@ -398,7 +585,6 @@ a {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    font-family: $font-gotham;
     font-weight: 500;
     font-size: 1.125rem;
     line-height: 1;
@@ -412,8 +598,22 @@ a {
     color: $color-blue;
   }
 
-  &__link--last {
-    flex-basis: 20%;
-    text-align: right;
+  @include media-breakpoint-up(md) {
+    &__link--last {
+      flex-basis: 20%;
+      text-align: right;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &__links {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    a,
+    &__link--last {
+      margin: 0.75rem 0;
+    }
   }
 }

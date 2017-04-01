@@ -90,7 +90,6 @@ module.exports = function (grunt) {
                     src: ['*.css', '!*.min.css'],
                     dest: 'css/',
                     ext: '.min.css'
-
                 }]
             }
         },
