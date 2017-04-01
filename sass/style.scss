@@ -3,7 +3,7 @@ Theme Name: Bootstrap 4 Sass
 Description: Bootstrap 4 with Sass
 */
 
-@import "scss/bootstrap-flex";
+@import "scss/bootstrap";
 
 // variables
 @import "helpers/variables";
@@ -18,7 +18,13 @@ Description: Bootstrap 4 with Sass
 /* GENERAL STYLES
 -------------------------------------------------*/
 html {
-  //font-size: 10px;
+  @include media-breakpoint-only(md){
+    font-size: 12px;
+  }
+
+  @include media-breakpoint-only(lg){
+    font-size: 14px;
+  }
 }
 
 
@@ -127,15 +133,15 @@ a {
 
   .logo {
     position: absolute;
-    transform: translateY(-30%); // -75px for default logo size
+    transform: translate(-2.2rem, -30%); // -75px for default logo size
     z-index: $zindex-up;
   }
 
   &__nav {
     position: absolute;
-    left: 30%;
+    left: 25%;
     top: 0;
-    width: 70%;
+    width: 75%;
     z-index: $zindex-up;
   }
 
@@ -145,7 +151,7 @@ a {
     font-size: 1.375rem; // 22px
     line-height: 1;
     letter-spacing: $letter-spacing-gotham;
-    padding-top: $grid-gutter-width;
+    padding-top: $grid-gutter-width-base;
     display: flex;
     text-transform: uppercase;
     justify-content: space-between;
@@ -176,13 +182,38 @@ a {
   }
 
   .swiper-slide-content {
-    max-width: calc(800px + #{$grid-gutter-width});
-    padding: 0 #{$grid-gutter-width / 2};
-    margin-top: 10rem;
+    // Make enough space for swiper arrows
+    width: calc(100% - 15rem);
+    max-width: calc(800px + #{$grid-gutter-width-base});
+    padding: 0 #{$grid-gutter-width-base / 2};
+    // This results in 5vh because of elements being wrapped in flexbox
+    margin-top: 10vh;
+  }
+
+  .swiper-arrow {
+    position: absolute;
+    width: 3.15rem; //50px
+    height: 3.15rem; //50px
+    border-radius: 50%;
+    background: $bg-blue url(/img/icons/arrow.svg) center no-repeat;
+    background-size: 0.5625rem 0.9375rem; //9px 15px
+    // Align arrows with content
+    top: 55vh;
+    z-index: $zindex-up;
+
+    &--prev {
+      left: 0;
+      transform: translate(50%, -50%);
+    }
+
+    &--next {
+      right: 0;
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
   }
 
   &__statement {
-    margin-left: 3rem;
+    margin: 0 3rem;
   }
 
   &__statement-heading {
@@ -225,7 +256,7 @@ a {
   @include media-breakpoint-up(md) {
     &__menu {
       &--small {
-        height: 5.5rem;
+        height: 5.25rem;
       }
     }
   }
@@ -332,6 +363,21 @@ a {
     justify-content: center;
     align-items: center;
   }
+
+  &__img {
+    display: block;
+    max-height: 90%;
+
+    &--ray-ban {
+      margin-top: 1%;
+    }
+  }
+
+  @include media-breakpoint-only(md) {
+    &__item {
+      width: calc(33.333333% - 1px);
+    }
+  }
 }
 
 .footer {
@@ -367,7 +413,6 @@ a {
   }
 
   &__link--last {
-    //flex-grow: 1;
     flex-basis: 20%;
     text-align: right;
   }
