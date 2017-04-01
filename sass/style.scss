@@ -319,7 +319,6 @@ a {
     font-family: $font-lavanderia;
     font-size: 3.125rem;
     line-height: 0.8;
-    margin-left: 0.5em;
   }
 
   &__professional-eyecare {
@@ -472,7 +471,7 @@ a {
     overflow: hidden;
 
     &:hover {
-      .services__service-img {
+      img {
         transform: scale(1.1);
       }
     }
